@@ -15,19 +15,18 @@ export default function HomeView(props) {
 
     React.useEffect(() => {
         async function displayPersonal() {
-            if (props.mainView === "homeView") {
-                const readProfile = await crud.readProfile(props.user);
-                if (!readProfile.ok) {
-                    setPersonalBlurb("Sorry. Personalized homepage could not be made.");
-                }
-                else {
-                    const profile = await readProfile.json();
-                    setPersonalBlurb(`Welcome ${profile['_id']}! Your high score is ${profile['highScore']}.`);
-                }
-            }            
+            console.log("in function");
+            const readProfile = await crud.readProfile(props.user);
+            if (!readProfile.ok) {
+                setPersonalBlurb("Sorry. Personalized homepage could not be made.");
+            }
+            else {
+                const profile = await readProfile.json();
+                setPersonalBlurb(`Welcome ${profile['_id']}! Your high score is ${profile['highScore']}.`);
+            }          
         }
         displayPersonal();
-    }, []);
+    }, [props.user]);
 
     return (
         <div id="home-view">

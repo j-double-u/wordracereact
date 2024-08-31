@@ -14,7 +14,7 @@ export default function App() {
   
   return (
     <div id="app">
-      {mainView === "homeView" && <HomeView navigateTo={navigateTo} />}
+      {mainView === "homeView" && <HomeView navigateTo={navigateTo} user={user} mainView={mainView}/>}
       {mainView === "gameView" && <GameView navigateTo={navigateTo} />}
       {mainView === "resultsView" && <ResultsView navigateTo={navigateTo} />}
       {mainView === "loginView" && <LoginView  navigateTo={navigateTo}  setUser={setUser} />}

@@ -1,11 +1,12 @@
 import React from "react";
-import HomeView from "./HomeView";
-import GameView from "./GameView";
-import ResultsView from "./ResultsView";
-import LoginView from "./LoginView";
+import HomeView from "./HomeView.js";
+import GameView from "./GameView.js";
+import ResultsView from "./ResultsView.js";
+import LoginView from "./LoginView.js";
 
 export default function App() {
   const [mainView, setMainView] = React.useState("loginView");
+  const [user, setUser] = React.useState("");
 
   function navigateTo(view) {
     setMainView(view);
@@ -16,7 +17,7 @@ export default function App() {
       {mainView === "homeView" && <HomeView navigateTo={navigateTo} />}
       {mainView === "gameView" && <GameView navigateTo={navigateTo} />}
       {mainView === "resultsView" && <ResultsView navigateTo={navigateTo} />}
-      {mainView === "loginView" && <LoginView  navigateTo={navigateTo} />}
+      {mainView === "loginView" && <LoginView  navigateTo={navigateTo}  setUser={setUser} />}
     </div>
   );
 }
